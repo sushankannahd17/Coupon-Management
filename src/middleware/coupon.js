@@ -1,4 +1,5 @@
 const { body, validationResult } = require("express-validator")
+const coupons = require("../service/coupon")
 
 const validate = (req, res, next) => {
     const errors = validationResult(req);
@@ -51,8 +52,4 @@ const addCoupon = [
         .toInt()
 ];
 
-const bestCoupon = () => {
-    
-}
-
-module.exports = { addCoupon, validate, bestCoupon };
+module.exports = { addCoupon, validate };

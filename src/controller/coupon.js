@@ -1,4 +1,5 @@
 const couponService = require("../service/coupon");
+const moment = require("moment");
 
 const addCoupon = async(req, res) => {
     try {
@@ -22,4 +23,15 @@ const addCoupon = async(req, res) => {
     }
 }
 
-module.exports = { addCoupon };
+const bestCoupon = async (req, res) => {
+    try {
+        const result = await couponService.bestCoupon(req.body);
+
+        return res.status(200).json(result);
+    } 
+    catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+}
+
+module.exports = { addCoupon, bestCoupon };
